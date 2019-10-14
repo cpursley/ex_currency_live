@@ -30,7 +30,7 @@ defmodule ExCurrencyLive.Worker do
 
   defp schedule_fetch(key) do
     Cache.delete(key)
-    CacheReader.currency_read_write(key)
+    CacheReader.read_write_exchange_rates(key)
 
     5_000..15_000 |> Enum.random |> :timer.sleep()
     schedule_fetch(key)

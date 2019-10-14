@@ -4,7 +4,7 @@ defmodule ExCurrencyLive.CacheReader do
   ## TODO:
   ## - Add timestamp (monotomic) to ex_currency struct
 
-  def currency_read(key) do
+  def read_exchange_rates(key) do
     case Cache.read(key) do
       {:ok, rate} ->
         rate
@@ -13,7 +13,7 @@ defmodule ExCurrencyLive.CacheReader do
     end
   end
 
-  def currency_read_write(key) do
+  def read_write_exchange_rates(key) do
     case Cache.read(key) do
       {:ok, rate} ->
         rate
@@ -31,7 +31,7 @@ defmodule ExCurrencyLive.CacheReader do
         IO.inspect(rate)
         rate
       _ ->
-        currency_read_write(key)
+        read_write_exchange_rates(key)
     end
   end
 
