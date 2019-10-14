@@ -24,5 +24,5 @@ iex> ExCurrencyLive.exchange_rates("usd", "rub")
 {:usd_rub, "64.3138"}
 {:usd_rub, "64.3135"}
 {:usd_rub, "64.3131"}
-{:usd_rub, "64.3127"
+{:usd_rub, "64.3127"}
 ```
