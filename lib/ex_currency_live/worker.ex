@@ -13,9 +13,10 @@ defmodule ExCurrencyLive.Worker do
   end
 
   def exchange_rates(to, from) do
-    key = to <> "_" <> from |> String.to_atom
-    GenServer.cast(__MODULE__, {:exchange_rates, key})
+    GenServer.cast(__MODULE__, {:exchange_rates, rates_to_key(to, from)})
   end
+
+  defp rates_to_key(to, from), do: to <> "_" <> from |> String.to_atom
 
   # Server API
 
