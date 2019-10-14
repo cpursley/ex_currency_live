@@ -1,21 +1,31 @@
 # ExCurrencyLive
 
-**TODO: Add description**
+An Elixir library for streaming currency exchange rates from [www.investing.com](https://www.investing.com)
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_currency_live` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:ex_currency_live, "~> 0.1.0"}
+    {:ex_currency_live, git: "https://github.com/cpursley/ex_currency_live.git"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_currency_live](https://hexdocs.pm/ex_currency_live).
+## Usage
 
+Stream an exchange rate
+```
+iex(1)> ExCurrency.exchange_rates("usd", "rub")
+{:ok, %ExCurrency.Rates{from: "usd", rate: "64.2224", to: "rub"}}
+```
+
+Fetch multiple exchange rates (concurrently)
+```
+iex> ExCurrencyLive.exchange_rates("usd", "rub")
+%ExCurrency.Rates{from: "usd", rate: "64.2984", to: "rub"}
+%ExCurrency.Rates{from: "usd", rate: "64.2963", to: "rub"}
+%ExCurrency.Rates{from: "usd", rate: "64.2947", to: "rub"}
+%ExCurrency.Rates{from: "usd", rate: "64.2943", to: "rub"}
+%ExCurrency.Rates{from: "usd", rate: "64.2931", to: "rub"}
+```
