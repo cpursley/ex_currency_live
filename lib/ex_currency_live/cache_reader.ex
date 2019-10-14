@@ -14,9 +14,9 @@ defmodule ExCurrencyLive.CacheReader do
     [to, from] = key_to_string(key)
     case ExCurrency.exchange_rates(to, from) do
       {:ok, value} ->
-        IO.inspect(value)
         Cache.write(key, {key, value.rate})
         {:ok, rate} = Cache.read(key)
+        IO.inspect(rate)
         rate
       {:error, :unfetchable} ->
         currency_read_write(key)
