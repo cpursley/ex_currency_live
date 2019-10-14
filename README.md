@@ -2,6 +2,8 @@
 
 An Elixir library for streaming currency exchange rates from [www.investing.com](https://www.investing.com)
 
+Uses [ex_currency](https://github.com/cpursley/ex_currency) for fetching currency.
+
 ## Installation
 
 ```elixir
@@ -15,12 +17,6 @@ end
 ## Usage
 
 Stream an exchange rate
-```
-iex(1)> ExCurrency.exchange_rates("usd", "rub")
-{:ok, %ExCurrency.Rates{from: "usd", rate: "64.2224", to: "rub"}}
-```
-
-Fetch multiple exchange rates (concurrently)
 ```
 iex> ExCurrencyLive.exchange_rates("usd", "rub")
 %ExCurrency.Rates{from: "usd", rate: "64.2984", to: "rub"}
