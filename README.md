@@ -19,9 +19,10 @@ end
 Stream an exchange rate
 ```
 iex> ExCurrencyLive.exchange_rates("usd", "rub")
-%ExCurrency.Rates{from: "usd", rate: "64.2984", to: "rub"}
-%ExCurrency.Rates{from: "usd", rate: "64.2963", to: "rub"}
-%ExCurrency.Rates{from: "usd", rate: "64.2947", to: "rub"}
-%ExCurrency.Rates{from: "usd", rate: "64.2943", to: "rub"}
-%ExCurrency.Rates{from: "usd", rate: "64.2931", to: "rub"}
+{:usd_rub, "64.3130"}
+{:usd_rub, "64.3138"}
+{:usd_rub, "64.3138"}
+{:usd_rub, "64.3135"}
+{:usd_rub, "64.3131"}
+{:usd_rub, "64.3127"
 ```
