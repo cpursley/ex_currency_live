@@ -1,6 +1,9 @@
 defmodule ExCurrencyLive.CacheReader do
   alias ExCurrencyLive.Cache
 
+  ## TODO:
+  ## - Add timestamp (monotomic) to ex_currency struct
+
   def currency_read_write(key) do
     case Cache.read(key) do
       {:ok, rate} ->
@@ -18,7 +21,7 @@ defmodule ExCurrencyLive.CacheReader do
         {:ok, rate} = Cache.read(key)
         IO.inspect(rate)
         rate
-      {:error, :unfetchable} ->
+      _ ->
         currency_read_write(key)
     end
   end
