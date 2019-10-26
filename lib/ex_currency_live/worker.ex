@@ -1,6 +1,7 @@
 defmodule ExCurrencyLive.Worker do
   use GenServer
   alias ExCurrencyLive.{Cache, CacheReader}
+  import ExCurrencyLive.Helper, only: [rates_to_key: 2]
 
   ## TODO:
   ## - We probaly want a process for each exchange_rates request and a supervisor
@@ -12,11 +13,9 @@ defmodule ExCurrencyLive.Worker do
     GenServer.start_link(__MODULE__, :ok, opts ++ [name: __MODULE__])
   end
 
-  def exchange_rates(to, from) do
+  def exchange_rates_worker(to, from) do
     GenServer.cast(__MODULE__, {:exchange_rates, rates_to_key(to, from)})
   end
-
-  defp rates_to_key(to, from), do: to <> "_" <> from |> String.to_atom
 
   # Server API
 
