@@ -16,13 +16,14 @@ end
 
 ## Usage
 
-Stream an exchange rate
+Start exchange rates worker
 ```
-iex> ExCurrencyLive.exchange_rates("usd", "rub")
-{:usd_rub, "64.3130"}
-{:usd_rub, "64.3138"}
-{:usd_rub, "64.3138"}
-{:usd_rub, "64.3135"}
-{:usd_rub, "64.3131"}
-{:usd_rub, "64.3127"}
+iex> ExCurrencyLive.exchange_rates_worker("usd", "rub")
+:ok
+```
+
+Fetch cached exchange rates
+```
+iex> ExCurrencyLive.exchange_rates_fetcher("usd", "rub")
+%ExCurrency.Rates{from: "usd", rate: "64.3130", to: "rub"}
 ```
